@@ -1,5 +1,5 @@
 # YTDownloader
-YT Downloader written in python using the yt-dlp library.
+YT Downloader written in python using the yt-dlp library. The download format is webm.
 
 ## Usage:
 ./YTdownloader.py (or python3 YTDownloader.py) \<video link> \[flags]
