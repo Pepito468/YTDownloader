@@ -19,7 +19,7 @@ arguments = argparse.ArgumentParser(description='Download YT video')
 arguments.add_argument('url', help='Video URL')
 arguments.add_argument('-oa','--onlyaudio', action='store_true', help='Download only the audio')
 arguments.add_argument('-ov','--onlyvideo', action='store_true', help='Download only the Video')
-arguments.add_argument('-r' ,'--resolution',type=str, default='best', help='Video resolution')
+arguments.add_argument('-r' ,'--resolution', type=str, help='Video resolution')
 
 args = arguments.parse_args()
 
@@ -39,10 +39,29 @@ if args.onlyaudio:
 elif args.onlyvideo:
     ydl_opts = {'format': 'bestvideo'}
 else:
-    ydl_opts = {'format': 'best'}
+    ydl_opts = {'format': 'bestaudio+bestvideo'}
 
-if args.resolution != 'best':
-    ydl_opts['format'] += f'[height<={args.resolution}]'
+resolutionlist = ('256x144','426x240','640x360','854x480','1280x720','1920x1080','3840x2160')
+
+if args.resolution:
+    if args.resolution == '144p':
+        res = resolutionlist[0]
+    elif args.resolution == '240p':
+        res = resolutionlist[1]
+    elif args.resolution == '360p':
+        res = resolutionlist[2]
+    elif args.resolution == '480p':
+        res = resolutionlist[3]
+    elif args.resolution == '720p':
+        res = resolutionlist[4]
+    elif args.resolution == '1080p':
+        res = resolutionlist[5]
+    elif args.resolution == '2160p':
+        res = resolutionlist[6]
+    else:
+        raise AttributeError("Invalid resolution")
+
+    ydl_opts['format'] = f'bestvideo[ext=webm][resolution={res}]+bestaudio'
 
 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
     ydl.download([video_url])
