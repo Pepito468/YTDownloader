@@ -16,8 +16,8 @@ import yt_dlp
 
 arguments = argparse.ArgumentParser(description='Download YT video')
 
-arguments.add_argument('url',help='Video URL')
-arguments.add_argument('-oa','--onlyaudio', action='store_true', help='Download only the Audio')
+arguments.add_argument('url', help='Video URL')
+arguments.add_argument('-oa','--onlyaudio', action='store_true', help='Download only the audio')
 arguments.add_argument('-ov','--onlyvideo', action='store_true', help='Download only the Video')
 arguments.add_argument('-r' ,'--resolution',type=str, default='best', help='Video resolution')
 
