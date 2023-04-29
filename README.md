@@ -1,5 +1,5 @@
 # YTDownloader
-YT Downloader written in python
+YT Downloader written in python using the yt-dlp library.
 
 ## Flags:
 * -oa (--onlyaudio): download only the audio
