@@ -1,3 +1,5 @@
+#This code is under the GPLv3 Licence. The full repository can be found at github.com/Pepito468/YTDownloader
+
 #Libraries
 
 import importlib
