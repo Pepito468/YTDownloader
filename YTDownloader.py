@@ -4,15 +4,24 @@
 
 import importlib
 import argparse
+import platform
 
 #Install yt-dlp if not already installed
-
-try:
-    importlib.import_module('yt_dlp')
-except ImportError:
-    import subprocess
-    subprocess.check_call(['pip','install','yt-dlp'])
-import yt_dlp
+if platform.system() == 'Windows':
+	#WINDOWS
+	try:
+	    	importlib.import_module('yt_dlp')
+	except ImportError:
+	    	import subprocess
+    		subprocess.check_call(['pip','install','yt-dlp'])
+	import yt_dlp
+	
+else:
+	#LINUX ETC
+	try:
+		import yt_dlp
+	except ImportError:
+		print("Please download the yt-dlp library from your repository")
 
 #Argparse arguments
 
